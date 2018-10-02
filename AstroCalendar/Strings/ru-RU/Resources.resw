@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="full-moon" xml:space="preserve">
+    <value>Полнолуние</value>
+  </data>
+  <data name="MapToken" xml:space="preserve">
+    <value>XNZatxh8MyYmELKmPMd8~w29lhb7EqeGriAZqAbQbUg~AhIw4OgbHLvxtxCNYi8rrf-cJpPEZSHeUv7CKIKVT8tIiRsZQ-hI9GySb-k0c2HR</value>
+  </data>
+  <data name="new-moon" xml:space="preserve">
+    <value>Новолуние</value>
+  </data>
+  <data name="waningcrescent-moon" xml:space="preserve">
+    <value>Старая луна</value>
+  </data>
+  <data name="waninggibbous-moon" xml:space="preserve">
+    <value>Убывающая луна</value>
+  </data>
+  <data name="waningquarter-moon" xml:space="preserve">
+    <value>Последняя четверть</value>
+  </data>
+  <data name="waxingcrescent-moon" xml:space="preserve">
+    <value>Молодая луна</value>
+  </data>
+  <data name="waxinggibbous-moon" xml:space="preserve">
+    <value>Прибывающая луна</value>
+  </data>
+  <data name="waxingquarter-moon" xml:space="preserve">
+    <value>Первая четверть</value>
+  </data>
+  <data name="AboutApp.Text" xml:space="preserve">
+    <value>Солнечный и лунный календарь на день и месяц. Отображает время восхода и захода солнца, гражданские навигационные и астрономические сумерки, долготу дня. Время восхода и захода луны и ее фазу. Даты новолуния и полнолуния. Автоматическое определние местоположения и часового пояса (необходимы включенная функция Геопозиции и доступ к сети Интернет для определения населенного пункта).  Можно настраивать свои местоположения по координатам и часовому поясу.</value>
+  </data>
+  <data name="AboutDlg.PrimaryButtonText" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="AboutDlg.Title" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="LocationAddBtn.Label" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="LocationDelBtn.Label" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="LocationDlg.PrimaryButtonText" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="LocationDlg.SecondaryButtonText" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="LocationEditBtn.Label" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="LocationLatTb.PlaceholderText" xml:space="preserve">
+    <value>Широта</value>
+  </data>
+  <data name="LocationLatWrong" xml:space="preserve">
+    <value>Широта: неверное значение!</value>
+  </data>
+  <data name="LocationLonTb.PlaceholderText" xml:space="preserve">
+    <value>Долгота</value>
+  </data>
+  <data name="LocationLonWrong" xml:space="preserve">
+    <value>Долгота: неверное значение!</value>
+  </data>
+  <data name="LocationNameTb.PlaceholderText" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="LocationNameWrong" xml:space="preserve">
+    <value>Имя не должно быть пустым!</value>
+  </data>
+  <data name="LocationUpdateBtn.Label" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="MainCmdListAbout.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="MainCmdListLocations.Text" xml:space="preserve">
+    <value>Места</value>
+  </data>
+  <data name="MainIconListDaily.Text" xml:space="preserve">
+    <value>День</value>
+  </data>
+  <data name="MainIconListMonthly.Text" xml:space="preserve">
+    <value>Месяц</value>
+  </data>
+  <data name="MonthlyTypeComboStr1" xml:space="preserve">
+    <value>Солнце восходы/закаты</value>
+  </data>
+  <data name="MonthlyTypeComboStr2" xml:space="preserve">
+    <value>Гражданские сумерки</value>
+  </data>
+  <data name="MonthlyTypeComboStr3" xml:space="preserve">
+    <value>Навигационные сумерки</value>
+  </data>
+  <data name="MonthlyTypeComboStr4" xml:space="preserve">
+    <value>Астрономические сумерки</value>
+  </data>
+  <data name="MonthlyTypeComboStr5" xml:space="preserve">
+    <value>Луна восходы/закаты</value>
+  </data>
+  <data name="MonthlyTypeComboStr6" xml:space="preserve">
+    <value>Фазы луны</value>
+  </data>
+  <data name="MoonDailyDawnTimeTxt.Text" xml:space="preserve">
+    <value>Восход: </value>
+    <comment>Пробел в конце!</comment>
+  </data>
+  <data name="MoonDailyDuskTimeTxt.Text" xml:space="preserve">
+    <value>Закат: </value>
+    <comment>Пробел в конце!</comment>
+  </data>
+  <data name="MoonDailyPhaseTxt.Text" xml:space="preserve">
+    <value>Освещенность: </value>
+    <comment>Пробел в конце!</comment>
+  </data>
+  <data name="SunDailyAstroTxt.Text" xml:space="preserve">
+    <value>Астрономические</value>
+  </data>
+  <data name="SunDailyCivilTxt.Text" xml:space="preserve">
+    <value>Гражданские</value>
+  </data>
+  <data name="SunDailyDawnTimeTxt.Text" xml:space="preserve">
+    <value>Восход: </value>
+    <comment>Пробел в конце!</comment>
+  </data>
+  <data name="SunDailyDuskTimeTxt.Text" xml:space="preserve">
+    <value>Закат: </value>
+    <comment>Пробел в конце!</comment>
+  </data>
+  <data name="SunDailyEveningTxt.Text" xml:space="preserve">
+    <value>Вечер:</value>
+  </data>
+  <data name="SunDailyLengthTimeTxt.Text" xml:space="preserve">
+    <value>Долгота дня: </value>
+    <comment>Пробел в конце!</comment>
+  </data>
+  <data name="SunDailyMorningTxt.Text" xml:space="preserve">
+    <value>Утро:</value>
+  </data>
+  <data name="SunDailyNauticalTxt.Text" xml:space="preserve">
+    <value>Навигационные</value>
+  </data>
+  <data name="SunDailyNoonTimeTxt.Text" xml:space="preserve">
+    <value>Полдень: </value>
+    <comment>Пробел в конце!</comment>
+  </data>
+  <data name="PolicyTxt.Content" xml:space="preserve">
+    <value>Политика Конфиденциальности</value>
+  </data>
+  <data name="PolicyTxt.NavigateUri" xml:space="preserve">
+    <value>https://jareki.github.io/AstroCalendarRU.html</value>
+  </data>
+  <data name="Moon" xml:space="preserve">
+    <value>Луна</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>Солнце</value>
+  </data>
+</root>

@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="SunMoon.SunDailyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SunMoon"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    ManipulationMode="TranslateX" ManipulationDelta="Page_ManipulationDelta" ManipulationCompleted="Page_ManipulationCompleted" >
+    <Page.Resources>
+        <Style x:Key="TextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.ColumnSpan="3">
+            <TextBlock Name="DateTxt" FontSize="22" Margin="5" RelativePanel.AlignLeftWithPanel="True" />
+            <Button Name="BackBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72B;"
+                    RelativePanel.LeftOf="ForwardBtn" Click="BackBtn_Click" />
+            <Button Name="ForwardBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72A;"
+                    RelativePanel.LeftOf="TodayBtn" Click="ForwardBtn_Click" />
+            <Button Name="TodayBtn" FontFamily="Segoe MDL2 Assets" FontSize="28" Content="&#59601;"
+                    RelativePanel.AlignRightWithPanel="True" Click="TodayBtn_Click" />
+        </RelativePanel>
+        
+        <Image Source="/Assets/sun.png" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" />
+
+        <TextBlock Name="DawnTimeTxt" Style="{StaticResource TextStyle}" x:Uid="SunDailyDawnTimeTxt" Grid.Row="2" Grid.ColumnSpan="3" />
+        <TextBlock Name="DuskTimeTxt" Style="{StaticResource TextStyle}" x:Uid="SunDailyDuskTimeTxt" Grid.Row="3" Grid.ColumnSpan="3" />
+        <TextBlock Name="NoonTimeTxt" Style="{StaticResource TextStyle}" x:Uid="SunDailyNoonTimeTxt" Grid.Row="4" Grid.ColumnSpan="3" />
+        <TextBlock Name="LengthTimeTxt" Style="{StaticResource TextStyle}" x:Uid="SunDailyLengthTimeTxt" Grid.Row="5" Grid.ColumnSpan="3" />
+
+        <TextBlock x:Uid="SunDailyMorningTxt" Style="{StaticResource TextStyle}" Grid.Row="6" Grid.Column="1" />
+        <TextBlock x:Uid="SunDailyEveningTxt" Style="{StaticResource TextStyle}" Grid.Row="6" Grid.Column="2" />
+        <TextBlock x:Uid="SunDailyCivilTxt" Style="{StaticResource TextStyle}" Grid.Row="7" />
+        <TextBlock x:Uid="SunDailyNauticalTxt" Style="{StaticResource TextStyle}" Grid.Row="8" />
+        <TextBlock x:Uid="SunDailyAstroTxt" Style="{StaticResource TextStyle}" Grid.Row="9" />
+
+        <TextBlock Name="CivilDawnTxt" Style="{StaticResource TextStyle}" Grid.Row="7" Grid.Column="1" />
+        <TextBlock Name="NauticalDawnTxt" Style="{StaticResource TextStyle}" Grid.Row="8" Grid.Column="1" />
+        <TextBlock Name="AstroDawnTxt" Style="{StaticResource TextStyle}" Grid.Row="9" Grid.Column="1" />
+
+        <TextBlock Name="CivilDuskTxt" Style="{StaticResource TextStyle}" Grid.Row="7" Grid.Column="2" />
+        <TextBlock Name="NauticalDuskTxt" Style="{StaticResource TextStyle}" Grid.Row="8" Grid.Column="2" />
+        <TextBlock Name="AstroDuskTxt" Style="{StaticResource TextStyle}" Grid.Row="9" Grid.Column="2" />
+    </Grid>
+</Page>

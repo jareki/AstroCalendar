@@ -1,0 +1,168 @@
+﻿<Page
+    x:Class="SunMoon.MonthlyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SunMoon"
+    xmlns:data="using:SunMoon.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded"
+     >
+    <Page.Resources>
+        
+        <DataTemplate x:Key="CalendTemplate" x:DataType="data:CalendItem">
+            <UserControl>
+                <Grid>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="NarrowLayout">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="0" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="CalendItemGrid.Width" Value="40" />
+                                    <Setter Target="CalendItemGrid.Height" Value="53" />
+                                    <Setter Target="CalendItemDayTxt.FontSize" Value="20" />
+                                    <Setter Target="CalendItemDawnTxt.FontSize" Value="12" />
+                                    <Setter Target="CalendItemDuskTxt.FontSize" Value="12" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="WideLayout">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="600" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="CalendItemGrid.Width" Value="70" />
+                                    <Setter Target="CalendItemGrid.Height" Value="80" />
+                                    <Setter Target="CalendItemDayTxt.FontSize" Value="24" />
+                                    <Setter Target="CalendItemDawnTxt.FontSize" Value="16" />
+                                    <Setter Target="CalendItemDuskTxt.FontSize" Value="16" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="LargeLayout">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="900" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="CalendItemGrid.Width" Value="80" />
+                                    <Setter Target="CalendItemGrid.Height" Value="95" />
+                                    <Setter Target="CalendItemDayTxt.FontSize" Value="26" />
+                                    <Setter Target="CalendItemDawnTxt.FontSize" Value="18" />
+                                    <Setter Target="CalendItemDuskTxt.FontSize" Value="18" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    
+                    <Grid x:Name="CalendItemGrid" Width="50" Height="60" Margin="5">                
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Name="CalendItemDayTxt" FontSize="20" Text="{x:Bind DayNum}" />
+                    <TextBlock Name="CalendItemDawnTxt" Grid.Row="1" FontSize="14" Text="{x:Bind Rise}" />
+                    <TextBlock Name="CalendItemDuskTxt" Grid.Row="2" FontSize="14" Text="{x:Bind Set}" />
+                </Grid>
+                </Grid>
+            </UserControl>
+        </DataTemplate>
+        <DataTemplate x:Key="PhaseTemplate" x:DataType="data:PhaseItem">
+            <UserControl>
+                <Grid>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="NarrowLayout">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="0" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="PhasesItemGrid.Width" Value="40" />
+                                    <Setter Target="PhasesItemGrid.Height" Value="50" />
+                                    <Setter Target="PhasesItemDayTxt.FontSize" Value="20" />
+                                    <Setter Target="PhasesItemImg.Width" Value="25" />
+                                    <Setter Target="PhasesItemImg.Height" Value="25" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="WideLayout">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="600" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="PhasesItemGrid.Width" Value="55" />
+                                    <Setter Target="PhasesItemGrid.Height" Value="65" />
+                                    <Setter Target="PhasesItemDayTxt.FontSize" Value="24" />
+                                    <Setter Target="PhasesItemImg.Width" Value="32" />
+                                    <Setter Target="PhasesItemImg.Height" Value="32" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="LargeLayout">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="800" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="PhasesItemGrid.Width" Value="70" />
+                                    <Setter Target="PhasesItemGrid.Height" Value="85" />
+                                    <Setter Target="PhasesItemDayTxt.FontSize" Value="28" />
+                                    <Setter Target="PhasesItemImg.Width" Value="40" />
+                                    <Setter Target="PhasesItemImg.Height" Value="40" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Grid x:Name="PhasesItemGrid" Width="50" Height="60" Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="PhasesItemDayTxt" FontSize="20" Text="{x:Bind DayNum}" Foreground="{x:Bind Color}" HorizontalAlignment="Center" />
+                        <Image x:Name="PhasesItemImg" Grid.Row="1" Source="{x:Bind Asset}" Width="30" Height="30" />
+                    </Grid>
+                </Grid>
+            </UserControl>            
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ComboBox Name="TypeCombo" HorizontalAlignment="Stretch" Height="40" SelectionChanged="TypeCombo_SelectionChanged" />
+        <RelativePanel Grid.Row="1">
+            <TextBlock Name="DateTxt" FontSize="22" Margin="5" RelativePanel.AlignLeftWithPanel="True" />
+            <Button Name="BackBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72B;" RelativePanel.LeftOf="ForwardBtn" Click="BackBtn_Click" />
+            <Button Name="ForwardBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72A;" RelativePanel.AlignRightWithPanel="True" Click="ForwardBtn_Click" />
+        </RelativePanel>
+        <GridView Name="CalendarGrid" Grid.Row="2" ItemTemplate="{StaticResource CalendTemplate}" ItemsSource="{x:Bind Calend}"
+                  SelectionMode="Single" HorizontalAlignment="Center" IsItemClickEnabled="True" SelectionChanged="CalendarGrid_SelectionChanged"
+                  ManipulationMode="TranslateX" ManipulationDelta="CalendarGrid_ManipulationDelta" ManipulationCompleted="CalendarGrid_ManipulationCompleted" >
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  MaximumRowsOrColumns="7" />
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+        </GridView>
+        <GridView Name="PhaseGrid" Grid.Row="2" ItemTemplate="{StaticResource PhaseTemplate}" ItemsSource="{x:Bind Phases}"
+                  SelectionMode="Single" HorizontalAlignment="Center" IsItemClickEnabled="True" VirtualizingStackPanel.VirtualizationMode="Standard" SelectionChanged="PhaseGrid_SelectionChanged" >
+            <!--
+            <GridView.ItemContainerStyle>
+                <Style TargetType = "GridViewItem" >
+                    <Setter Property="MinWidth" Value="50" />
+                    <Setter Property="MinHeight" Value="60" />
+                </Style>
+            </GridView.ItemContainerStyle> -->
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  MaximumRowsOrColumns="7" />
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+        </GridView>
+    </Grid>
+</Page>

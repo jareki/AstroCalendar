@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="SunMoon.MoonDailyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SunMoon"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    ManipulationMode="TranslateX" ManipulationDelta="Page_ManipulationDelta" ManipulationCompleted="Page_ManipulationCompleted" >
+
+    <Page.Resources>
+        <Style x:Key="TextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <RelativePanel Grid.ColumnSpan="2">
+            <TextBlock Name="DateTxt" FontSize="22" Margin="5" RelativePanel.AlignLeftWithPanel="True" />
+            <Button Name="BackBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72B;" RelativePanel.LeftOf="ForwardBtn" Click="BackBtn_Click" />
+            <Button Name="ForwardBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72A;" RelativePanel.LeftOf="TodayBtn" Click="ForwardBtn_Click" />
+            <Button Name="TodayBtn" FontFamily="Segoe MDL2 Assets" FontSize="28" Content="&#59601;"
+                    RelativePanel.AlignRightWithPanel="True" Click="TodayBtn_Click" />
+        </RelativePanel>
+        
+        <Image Name="MoonImg" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" />
+
+        <TextBlock Name="DawnTimeTxt" Style="{StaticResource TextStyle}" x:Uid="MoonDailyDawnTimeTxt" Grid.Row="2" Grid.ColumnSpan="2" />
+        <TextBlock Name="DuskTimeTxt" Style="{StaticResource TextStyle}" x:Uid="MoonDailyDuskTimeTxt" Grid.Row="3" Grid.ColumnSpan="2" />
+        <TextBlock Name="PhaseTxt" Style="{StaticResource TextStyle}" x:Uid="MoonDailyPhaseTxt" Grid.Row="4" Grid.ColumnSpan="2"  />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center">
+            <Image Source="Assets\full-moon.png" Width="20" Height="20" Margin="5" />
+            <TextBlock Name="FullMoonDateTxt" Style="{StaticResource TextStyle}" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center">
+            <Image Source="Assets\new-moon.png" Width="20" Height="20" Margin="5" />
+            <TextBlock Name="NewMoonDateTxt" Style="{StaticResource TextStyle}" />
+        </StackPanel>
+    </Grid>
+</Page>

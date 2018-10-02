@@ -1,0 +1,23 @@
+﻿<Application
+    x:Class="SunMoon.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SunMoon"
+    RequestedTheme="Dark">
+
+    <Application.Resources>
+        <Style x:Key="MenuIcon" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+            <Setter Property="FontSize" Value="24" />
+        </Style>
+
+        <Style x:Key="MenuItem" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Margin" Value="15,0" />
+        </Style>
+
+
+    </Application.Resources>
+
+</Application>
