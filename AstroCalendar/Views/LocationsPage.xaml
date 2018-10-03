@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="SunMoon.LocationsPage"
+    x:Class="SunMoon.Views.LocationsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SunMoon"
@@ -23,24 +23,28 @@
         </Grid.RowDefinitions>
 
         <RelativePanel Margin="0,0,0,20">
-            <Button Name="BackBtn" FontFamily="Segoe MDL2 Assets" FontSize="25" Content="&#xe72b;" RelativePanel.AlignLeftWithPanel="True" Click="BackBtn_Click" />
+            <Button Name="BackBtn" FontFamily="Segoe MDL2 Assets" FontSize="25" Content="&#xe72b;"
+                    RelativePanel.AlignLeftWithPanel="True" Command="{Binding ExitCommand}" />
             <TextBlock Text="Locations" FontSize="25" RelativePanel.RightOf="BackBtn" Margin="10,0" />
         </RelativePanel>
 
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <ListBox Name="AutoListBox" SelectionMode="Single" HorizontalAlignment="Stretch" SelectionChanged="AutoListBox_SelectionChanged"
-                     ItemTemplate="{StaticResource LBTemplate}" Height="50" />
+                     ItemTemplate="{StaticResource LBTemplate}" ItemsSource="{Binding AutoLocations}" Height="50" />
 
 
             <ListBox Name="LocationsListBox" SelectionMode="Single" VerticalAlignment="Stretch"
-                     HorizontalAlignment="Stretch" SelectionChanged="LocationsListBox_SelectionChanged" ItemTemplate="{StaticResource LBTemplate}" />
+                     ItemsSource="{Binding Locations}" SelectedItem="{Binding SelectedLocation}"
+                     HorizontalAlignment="Stretch" SelectionChanged="LocationsListBox_SelectionChanged"
+                     ItemTemplate="{StaticResource LBTemplate}" />
 
         </StackPanel>
             <CommandBar Grid.Row="2" >
-            <AppBarButton Name="AddBtn" x:Uid="LocationAddBtn" Icon="Add" Click="AddBtn_Click" />
-            <AppBarButton Name="EditBtn" x:Uid="LocationEditBtn" Icon="Edit" Click="EditBtn_Click" IsEnabled="False" />
-            <AppBarButton Name="DelBtn" x:Uid="LocationDelBtn" Icon="Delete" Click="DelBtn_Click" IsEnabled="False" />
-            <AppBarButton Name="UpdateBtn" x:Uid="LocationUpdateBtn" Icon="Sync" Click="UpdateBtn_Click" />
+            <AppBarButton Name="AddBtn" x:Uid="LocationAddBtn" Icon="Add" Command="{Binding AddCommand}" />
+            <AppBarButton Name="EditBtn" x:Uid="LocationEditBtn" Icon="Edit" Command="{Binding EditCommand}" IsEnabled="False" />
+            <AppBarButton Name="DelBtn" x:Uid="LocationDelBtn" Icon="Delete" Command="{Binding DeleteCommand}" IsEnabled="False" />
+            <AppBarButton Name="UpdateBtn" x:Uid="LocationUpdateBtn" Icon="Sync" Command="{Binding UpdateCommand}"
+                          Click="UpdateBtn_Click" />
         </CommandBar>
     </Grid>
 </Page>

@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Content Dialog item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace SunMoon
+namespace SunMoon.Dialogs
 {
     public sealed partial class LocationDialog : ContentDialog
     {

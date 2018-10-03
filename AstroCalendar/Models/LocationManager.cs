@@ -59,15 +59,16 @@ namespace SunMoon.Models
             catch { }
 
             //when  using autodetecting
-            var device_pos = await GetDevicePosition();
-            if (device_pos == null)
-                return false;
-                
-            var device_coor = device_pos.Coordinate.Point.Position;
-            
-            if (Math.Abs(device_coor.Latitude - SettingsManager.Position.Latitude) + Math.Abs(device_coor.Longitude - SettingsManager.Position.Longitude) >= 1 || DateTime.Now - SettingsManager.DateCheck >= new TimeSpan(1,0,0,0))
+            try
             {
-                try
+                var device_pos = await GetDevicePosition();
+                if (device_pos == null)
+                    return false;
+
+                var device_coor = device_pos.Coordinate.Point.Position;
+
+
+                if (Math.Abs(device_coor.Latitude - SettingsManager.Position.Latitude) + Math.Abs(device_coor.Longitude - SettingsManager.Position.Longitude) >= 1 || DateTime.Now - SettingsManager.DateCheck >= new TimeSpan(1, 0, 0, 0))
                 {
                     var georesult = await MapLocationFinder.FindLocationsAtAsync(new Geopoint(device_coor));
                     if (georesult.Status == MapLocationFinderStatus.Success)
@@ -82,12 +83,12 @@ namespace SunMoon.Models
                     else
                         return false;
                 }
-                catch
-                {
-                    return false;
-                }
+                return true;
             }
-            return true;
+            catch
+            {
+                return false;
+            }
         }
     }
 }
