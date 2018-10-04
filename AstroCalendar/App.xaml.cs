@@ -1,4 +1,4 @@
-﻿using SunMoon.Models;
+﻿using AstroCalendar.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,7 +24,7 @@ using Windows.UI.Notifications;
 using Windows.Data.Xml.Dom;
 using System.Threading.Tasks;
 
-namespace SunMoon
+namespace AstroCalendar
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

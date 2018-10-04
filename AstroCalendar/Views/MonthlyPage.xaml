@@ -1,9 +1,9 @@
 ﻿<Page
-    x:Class="SunMoon.Views.MonthlyPage"
+    x:Class="AstroCalendar.Views.MonthlyPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:SunMoon"
-    xmlns:data="using:SunMoon.Models"
+    xmlns:local="using:AstroCalendar"
+    xmlns:data="using:AstroCalendar.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Loaded="Page_Loaded"
@@ -134,13 +134,15 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ComboBox Name="TypeCombo" HorizontalAlignment="Stretch" Height="40" SelectionChanged="TypeCombo_SelectionChanged" />
+        <ComboBox Name="TypeCombo" HorizontalAlignment="Stretch" Height="40" ItemsSource="{Binding TypeCol}"
+                  SelectedItem="{Binding SelectedType, Mode=TwoWay}"/>
         <RelativePanel Grid.Row="1">
-            <TextBlock Name="DateTxt" FontSize="22" Margin="5" RelativePanel.AlignLeftWithPanel="True" />
-            <Button Name="BackBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72B;" RelativePanel.LeftOf="ForwardBtn" Click="BackBtn_Click" />
-            <Button Name="ForwardBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72A;" RelativePanel.AlignRightWithPanel="True" Click="ForwardBtn_Click" />
+            <TextBlock Name="DateTxt" FontSize="22" Margin="5" Text="{Binding Date}"
+                       RelativePanel.AlignLeftWithPanel="True" />
+            <Button Name="BackBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72B;" RelativePanel.LeftOf="ForwardBtn" Command="{Binding BackwardCommand}" />
+            <Button Name="ForwardBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72A;" RelativePanel.AlignRightWithPanel="True" Command="{Binding ForwardCommand}" />
         </RelativePanel>
-        <GridView Name="CalendarGrid" Grid.Row="2" ItemTemplate="{StaticResource CalendTemplate}" ItemsSource="{x:Bind Calend}"
+        <GridView Name="CalendarGrid" Grid.Row="2" ItemTemplate="{StaticResource CalendTemplate}" ItemsSource="{Binding Calend}"
                   SelectionMode="Single" HorizontalAlignment="Center" IsItemClickEnabled="True" SelectionChanged="CalendarGrid_SelectionChanged"
                   ManipulationMode="TranslateX" ManipulationDelta="CalendarGrid_ManipulationDelta" ManipulationCompleted="CalendarGrid_ManipulationCompleted" >
             <GridView.ItemsPanel>
@@ -149,7 +151,7 @@
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
-        <GridView Name="PhaseGrid" Grid.Row="2" ItemTemplate="{StaticResource PhaseTemplate}" ItemsSource="{x:Bind Phases}"
+        <GridView Name="PhaseGrid" Grid.Row="2" ItemTemplate="{StaticResource PhaseTemplate}" ItemsSource="{Binding Phases}"
                   SelectionMode="Single" HorizontalAlignment="Center" IsItemClickEnabled="True" VirtualizingStackPanel.VirtualizationMode="Standard" SelectionChanged="PhaseGrid_SelectionChanged" >
             <!--
             <GridView.ItemContainerStyle>

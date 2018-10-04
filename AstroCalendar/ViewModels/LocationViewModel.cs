@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using SunMoon.Dialogs;
-using SunMoon.Models;
+using AstroCalendar.Dialogs;
+using AstroCalendar.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

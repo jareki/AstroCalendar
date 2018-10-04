@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SunMoon.Models
+namespace AstroCalendar.Models
 {
     public class CalendItem
     {

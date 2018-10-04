@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace SunMoon.Models
+namespace AstroCalendar.Models
 {
     class SettingsManager
     {

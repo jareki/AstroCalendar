@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SunMoon.Models
+namespace AstroCalendar.Models
 {
     [Table("Location")]
     public class Location
