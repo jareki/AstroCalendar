@@ -12,6 +12,7 @@
             <Setter Property="FontSize" Value="14" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="5,0"/>
         </Style>
     </Page.Resources>
 
@@ -35,21 +36,33 @@
         </Grid.RowDefinitions>
 
         <RelativePanel Grid.ColumnSpan="3">
-            <TextBlock Name="DateTxt" FontSize="22" Margin="5" RelativePanel.AlignLeftWithPanel="True" />
+            <TextBlock Name="DateTxt" Text="{Binding Date}" FontSize="22" Margin="5" RelativePanel.AlignLeftWithPanel="True" />
             <Button Name="BackBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72B;"
-                    RelativePanel.LeftOf="ForwardBtn" Click="BackBtn_Click" />
+                    RelativePanel.LeftOf="ForwardBtn" Command="{Binding BackwardCommand}" />
             <Button Name="ForwardBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72A;"
-                    RelativePanel.LeftOf="TodayBtn" Click="ForwardBtn_Click" />
+                    RelativePanel.LeftOf="TodayBtn" Command="{Binding ForwardCommand}" />
             <Button Name="TodayBtn" FontFamily="Segoe MDL2 Assets" FontSize="28" Content="&#59601;"
-                    RelativePanel.AlignRightWithPanel="True" Click="TodayBtn_Click" />
+                    RelativePanel.AlignRightWithPanel="True" Command="{Binding TodayCommand}" />
         </RelativePanel>
         
         <Image Source="/Assets/sun.png" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" />
 
-        <TextBlock Name="DawnTimeTxt" Style="{StaticResource TextStyle}" x:Uid="SunDailyDawnTimeTxt" Grid.Row="2" Grid.ColumnSpan="3" />
-        <TextBlock Name="DuskTimeTxt" Style="{StaticResource TextStyle}" x:Uid="SunDailyDuskTimeTxt" Grid.Row="3" Grid.ColumnSpan="3" />
-        <TextBlock Name="NoonTimeTxt" Style="{StaticResource TextStyle}" x:Uid="SunDailyNoonTimeTxt" Grid.Row="4" Grid.ColumnSpan="3" />
-        <TextBlock Name="LengthTimeTxt" Style="{StaticResource TextStyle}" x:Uid="SunDailyLengthTimeTxt" Grid.Row="5" Grid.ColumnSpan="3" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="3" >
+            <TextBlock x:Uid="SunDailyDawnTimeTxt" Style="{StaticResource TextStyle}"/>
+            <TextBlock Name="DawnTimeTxt" Style="{StaticResource TextStyle}" Text="{Binding DawnTime}"  />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="3">
+            <TextBlock x:Uid="SunDailyDuskTimeTxt" Style="{StaticResource TextStyle}"/>
+            <TextBlock Name="DuskTimeTxt" Style="{StaticResource TextStyle}" Text="{Binding DuskTime}"  />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="3">
+            <TextBlock x:Uid="SunDailyNoonTimeTxt" Style="{StaticResource TextStyle}" />
+            <TextBlock Name="NoonTimeTxt" Style="{StaticResource TextStyle}" Text="{Binding NoonTime}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="5" Grid.ColumnSpan="3">
+            <TextBlock x:Uid="SunDailyLengthTimeTxt" Style="{StaticResource TextStyle}" />
+            <TextBlock Name="LengthTimeTxt" Style="{StaticResource TextStyle}" Text="{Binding LengthTime}"  />
+        </StackPanel>
 
         <TextBlock x:Uid="SunDailyMorningTxt" Style="{StaticResource TextStyle}" Grid.Row="6" Grid.Column="1" />
         <TextBlock x:Uid="SunDailyEveningTxt" Style="{StaticResource TextStyle}" Grid.Row="6" Grid.Column="2" />
@@ -57,12 +70,18 @@
         <TextBlock x:Uid="SunDailyNauticalTxt" Style="{StaticResource TextStyle}" Grid.Row="8" />
         <TextBlock x:Uid="SunDailyAstroTxt" Style="{StaticResource TextStyle}" Grid.Row="9" />
 
-        <TextBlock Name="CivilDawnTxt" Style="{StaticResource TextStyle}" Grid.Row="7" Grid.Column="1" />
-        <TextBlock Name="NauticalDawnTxt" Style="{StaticResource TextStyle}" Grid.Row="8" Grid.Column="1" />
-        <TextBlock Name="AstroDawnTxt" Style="{StaticResource TextStyle}" Grid.Row="9" Grid.Column="1" />
+        <TextBlock Name="CivilDawnTxt" Style="{StaticResource TextStyle}"
+                   Text="{Binding CivilDawnTime}" Grid.Row="7" Grid.Column="1" />
+        <TextBlock Name="NauticalDawnTxt" Style="{StaticResource TextStyle}"
+                   Text="{Binding NauticalDawnTime}" Grid.Row="8" Grid.Column="1" />
+        <TextBlock Name="AstroDawnTxt" Style="{StaticResource TextStyle}"
+                   Text="{Binding AstroDawnTime}" Grid.Row="9" Grid.Column="1" />
 
-        <TextBlock Name="CivilDuskTxt" Style="{StaticResource TextStyle}" Grid.Row="7" Grid.Column="2" />
-        <TextBlock Name="NauticalDuskTxt" Style="{StaticResource TextStyle}" Grid.Row="8" Grid.Column="2" />
-        <TextBlock Name="AstroDuskTxt" Style="{StaticResource TextStyle}" Grid.Row="9" Grid.Column="2" />
+        <TextBlock Name="CivilDuskTxt" Style="{StaticResource TextStyle}"
+                   Text="{Binding CivilDuskTime}" Grid.Row="7" Grid.Column="2" />
+        <TextBlock Name="NauticalDuskTxt" Style="{StaticResource TextStyle}"
+                   Text="{Binding NauticalDuskTime}" Grid.Row="8" Grid.Column="2" />
+        <TextBlock Name="AstroDuskTxt" Style="{StaticResource TextStyle}"
+                   Text="{Binding AstroDuskTime}" Grid.Row="9" Grid.Column="2" />
     </Grid>
 </Page>

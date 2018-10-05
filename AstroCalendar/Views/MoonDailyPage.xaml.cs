@@ -1,4 +1,5 @@
 ﻿using AstroCalendar.Models;
+using AstroCalendar.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,9 +25,6 @@ namespace AstroCalendar.Views
     /// </summary>
     public sealed partial class MoonDailyPage : Page
     {
-        DateTime date;
-        Moon moon;
-        Sun sun;
         private double distX;
 
         public MoonDailyPage()
@@ -36,60 +34,8 @@ namespace AstroCalendar.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            date = (DateTime)e.Parameter;
-            moon = new Moon(date, LocationManager.Geoposition.Latitude, LocationManager.Geoposition.Longitude, TimeZoneInfo.FindSystemTimeZoneById(LocationManager.Geoposition.TimeZone));
-            sun = new Sun(date, LocationManager.Geoposition.Latitude, LocationManager.Geoposition.Longitude, TimeZoneInfo.FindSystemTimeZoneById(LocationManager.Geoposition.TimeZone));
-
-            DateTxt.Text = date.ToString("dd.MM.yyyy");
-            DawnTimeTxt.Text += !moon.Result.NoDawn ? moon.Dawn.ToString("HH:mm") : "---";
-            DuskTimeTxt.Text += !moon.Result.NoDusk ? moon.Dusk.ToString("HH:mm") : "---";
-
-            double illumination = Astro.GetMoonPhase(moon, sun);
-            int percent = (int)(illumination * 100);
-            PhaseTxt.Text += $"{Math.Abs(percent)} %, ";
-
-            var result = Astro.GetMoonPhase(illumination);
-            PhaseTxt.Text += result.Item1;
-            MoonImg.Source = new BitmapImage(new Uri(result.Item2));
-
-            var moondates = Astro.GetFullNewMoonDate(date, LocationManager.Geoposition.Latitude, LocationManager.Geoposition.Longitude, TimeZoneInfo.FindSystemTimeZoneById(LocationManager.Geoposition.TimeZone));
-            FullMoonDateTxt.Text = moondates.Item1.ToString("dd.MM.yy");
-            NewMoonDateTxt.Text = moondates.Item2.ToString("dd.MM.yy");
-            
+            DataContext = new MoonDailyViewModel();            
             base.OnNavigatedTo(e);
-        }
-
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var param = new MainNavParam()
-            {
-                Date = date.AddDays(-1),
-                IsSun = false
-            };
-            Frame thisFrame = Window.Current.Content as Frame;
-            thisFrame.Navigate(typeof(MainPage), param);
-        }
-
-        private void ForwardBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var param = new MainNavParam()
-            {
-                Date = date.AddDays(1),
-                IsSun = false
-            };
-            Frame thisFrame = Window.Current.Content as Frame;
-            thisFrame.Navigate(typeof(MainPage), param);
-        }
-
-        private void TodayBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var param = new MainNavParam()
-            {
-                Date = DateTime.Now,
-                IsSun = false
-            };
-            Frame thisFrame = Window.Current.Content as Frame;
-            thisFrame.Navigate(typeof(MainPage), param);
         }
 
         private void Page_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
@@ -101,9 +47,9 @@ namespace AstroCalendar.Views
         {
             if (Math.Abs(distX) <= 3) return;
             if (distX > 0)
-                BackBtn_Click(sender, null);
+                (DataContext as MoonDailyViewModel).BackwardCommand?.Execute(null);
             else if (distX < 0)
-                ForwardBtn_Click(sender, null);
+                (DataContext as MoonDailyViewModel).ForwardCommand?.Execute(null);
         }
     }
 

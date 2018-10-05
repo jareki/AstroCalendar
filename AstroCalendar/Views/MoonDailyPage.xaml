@@ -31,27 +31,39 @@
         </Grid.ColumnDefinitions>
 
         <RelativePanel Grid.ColumnSpan="2">
-            <TextBlock Name="DateTxt" FontSize="22" Margin="5" RelativePanel.AlignLeftWithPanel="True" />
-            <Button Name="BackBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72B;" RelativePanel.LeftOf="ForwardBtn" Click="BackBtn_Click" />
-            <Button Name="ForwardBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5" Content="&#xE72A;" RelativePanel.LeftOf="TodayBtn" Click="ForwardBtn_Click" />
+            <TextBlock Name="DateTxt" Text="{Binding Date}" FontSize="22" Margin="5" RelativePanel.AlignLeftWithPanel="True" />
+            <Button Name="BackBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5"
+                    Content="&#xE72B;" RelativePanel.LeftOf="ForwardBtn" Command="{Binding BackwardCommand}" />
+            <Button Name="ForwardBtn" FontFamily="Segoe MDL2 Assets" FontSize="22" Margin="5"
+                    Content="&#xE72A;" RelativePanel.LeftOf="TodayBtn" Command="{Binding ForwardCommand}" />
             <Button Name="TodayBtn" FontFamily="Segoe MDL2 Assets" FontSize="28" Content="&#59601;"
-                    RelativePanel.AlignRightWithPanel="True" Click="TodayBtn_Click" />
+                    RelativePanel.AlignRightWithPanel="True" Command="{Binding TodayCommand}" />
         </RelativePanel>
         
-        <Image Name="MoonImg" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" />
+        <Image Name="MoonImg" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Grid.Row="1" Grid.ColumnSpan="2" Source="{Binding MoonIcon}" />
 
-        <TextBlock Name="DawnTimeTxt" Style="{StaticResource TextStyle}" x:Uid="MoonDailyDawnTimeTxt" Grid.Row="2" Grid.ColumnSpan="2" />
-        <TextBlock Name="DuskTimeTxt" Style="{StaticResource TextStyle}" x:Uid="MoonDailyDuskTimeTxt" Grid.Row="3" Grid.ColumnSpan="2" />
-        <TextBlock Name="PhaseTxt" Style="{StaticResource TextStyle}" x:Uid="MoonDailyPhaseTxt" Grid.Row="4" Grid.ColumnSpan="2"  />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="2" >
+            <TextBlock Style="{StaticResource TextStyle}" x:Uid="MoonDailyDawnTimeTxt" />
+            <TextBlock Name="DawnTimeTxt" Style="{StaticResource TextStyle}" Text="{Binding DawnTime}"  />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" >
+            <TextBlock Style="{StaticResource TextStyle}" x:Uid="MoonDailyDuskTimeTxt" />
+            <TextBlock Name="DuskTimeTxt" Style="{StaticResource TextStyle}" Text="{Binding DuskTime}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="2" >
+            <TextBlock Style="{StaticResource TextStyle}" x:Uid="MoonDailyPhaseTxt" />
+            <TextBlock Name="PhaseTxt" Style="{StaticResource TextStyle}" Text="{Binding PhasePercent}"   />
+        </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center">
-            <Image Source="Assets\full-moon.png" Width="20" Height="20" Margin="5" />
-            <TextBlock Name="FullMoonDateTxt" Style="{StaticResource TextStyle}" />
+            <Image Source="/Assets/full-moon.png" Width="20" Height="20" Margin="5" />
+            <TextBlock Name="FullMoonDateTxt" Style="{StaticResource TextStyle}" Text="{Binding FoolMoonDate}" />
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center">
-            <Image Source="Assets\new-moon.png" Width="20" Height="20" Margin="5" />
-            <TextBlock Name="NewMoonDateTxt" Style="{StaticResource TextStyle}" />
+            <Image Source="/Assets/new-moon.png" Width="20" Height="20" Margin="5" />
+            <TextBlock Name="NewMoonDateTxt" Style="{StaticResource TextStyle}" Text="{Binding NewMoonDate}"/>
         </StackPanel>
     </Grid>
 </Page>

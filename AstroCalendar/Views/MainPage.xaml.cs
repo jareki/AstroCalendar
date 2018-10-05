@@ -48,9 +48,9 @@ namespace AstroCalendar.Views
                 case 0: //Daily
                     BottomList.Visibility = Visibility.Visible;
                     if (BottomList.SelectedIndex==0) //Sun
-                        MainFrame.Navigate(typeof(SunDailyPage), date);
+                        MainFrame.Navigate(typeof(SunDailyPage));
                     if (BottomList.SelectedIndex == 1) //Moon
-                        MainFrame.Navigate(typeof(MoonDailyPage), date);
+                        MainFrame.Navigate(typeof(MoonDailyPage));
                     break;
                 case 1: //Monthly
                     BottomList.Visibility = Visibility.Collapsed;
@@ -66,27 +66,18 @@ namespace AstroCalendar.Views
         {
             try
             {
-                var param = (MainNavParam)(e.Parameter);
-                date = param.Date;
                 DateTxt.Text = $"{LocationManager.Geoposition.Name} (GMT{TimeZoneInfo.FindSystemTimeZoneById(LocationManager.Geoposition.TimeZone).GetUtcOffset(DateTime.UtcNow).Hours})";
-                BottomList.SelectedIndex = param.IsSun ? 0 : 1;
-            }
-            catch (InvalidCastException)
-            {
-                date = DateTime.Now;
-                DateTxt.Text = $"{LocationManager.Geoposition.Name} (GMT{TimeZoneInfo.FindSystemTimeZoneById(LocationManager.Geoposition.TimeZone).GetUtcOffset(DateTime.UtcNow).Hours})";
-                BottomList.SelectedIndex = 0;
             }
             catch (ArgumentNullException)
             {
-                BottomList.SelectedIndex = 0;
+                
                 DateTxt.Text = "Error";
-                date = DateTime.Now;
             }
             catch { }
             finally
             {
                 IconList.SelectedIndex = 0;
+                BottomList.SelectedIndex = 0;
                 base.OnNavigatedTo(e);
             }
         }
@@ -109,12 +100,6 @@ namespace AstroCalendar.Views
             CommandList.SelectedIndex = -1;
         }
 
-        private void TodayBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Frame thisFrame = Window.Current.Content as Frame;
-            thisFrame.Navigate(typeof(MainPage),string.Empty);
-        }
-
         private async void RegisterBackgroundTask()
         {
                 var backgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
@@ -129,8 +114,10 @@ namespace AstroCalendar.Views
                         }
                     }
 
-                    BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder();
-                    taskBuilder.Name = "TileUpdateTask";
+                BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder
+                {
+                    Name = "TileUpdateTask"
+                };
                 taskBuilder.SetTrigger(new TimeTrigger(60, false));
                 taskBuilder.SetTrigger(new SystemTrigger(SystemTriggerType.TimeZoneChange, false));
                     
