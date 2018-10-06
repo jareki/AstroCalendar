@@ -66,7 +66,12 @@ namespace AstroCalendar.Views
         {
             try
             {
+                if (e.Parameter != null && e.Parameter is bool)
+                    BottomList.SelectedIndex = ((bool)e.Parameter) ? 0 : 1;
+                else
+                    BottomList.SelectedIndex = 0;
                 DateTxt.Text = $"{LocationManager.Geoposition.Name} (GMT{TimeZoneInfo.FindSystemTimeZoneById(LocationManager.Geoposition.TimeZone).GetUtcOffset(DateTime.UtcNow).Hours})";
+                
             }
             catch (ArgumentNullException)
             {
@@ -77,7 +82,6 @@ namespace AstroCalendar.Views
             finally
             {
                 IconList.SelectedIndex = 0;
-                BottomList.SelectedIndex = 0;
                 base.OnNavigatedTo(e);
             }
         }
@@ -102,6 +106,8 @@ namespace AstroCalendar.Views
 
         private async void RegisterBackgroundTask()
         {
+            try
+            { 
                 var backgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
                 if (backgroundAccessStatus == BackgroundAccessStatus.AlwaysAllowed ||
                     backgroundAccessStatus == BackgroundAccessStatus.AllowedSubjectToSystemPolicy)
@@ -114,15 +120,17 @@ namespace AstroCalendar.Views
                         }
                     }
 
-                BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder
-                {
-                    Name = "TileUpdateTask"
-                };
-                taskBuilder.SetTrigger(new TimeTrigger(60, false));
-                taskBuilder.SetTrigger(new SystemTrigger(SystemTriggerType.TimeZoneChange, false));
-                    
+                    BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder
+                    {
+                        Name = "TileUpdateTask"
+                    };
+                    taskBuilder.SetTrigger(new TimeTrigger(60, false));
+                    taskBuilder.SetTrigger(new SystemTrigger(SystemTriggerType.TimeZoneChange, false));
+
                     var registration = taskBuilder.Register();
+                }
             }
+            catch { }
         }
     }
 }

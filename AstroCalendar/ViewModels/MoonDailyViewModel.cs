@@ -18,7 +18,7 @@ namespace AstroCalendar.ViewModels
         Sun _sun;
 
         public string Date =>  App.SelectedDate.ToString("dd.MM.yyyy");
-        public string DownTime => !_moon.Result.NoDawn ? _moon.Dawn.ToString("HH:mm") : "---";
+        public string DawnTime => !_moon.Result.NoDawn ? _moon.Dawn.ToString("HH:mm") : "---";
         public string DuskTime => !_moon.Result.NoDusk ? _moon.Dusk.ToString("HH:mm") : "---";
         public string PhasePercent
         {
@@ -68,7 +68,7 @@ namespace AstroCalendar.ViewModels
             _sun = new Sun( App.SelectedDate, LocationManager.Geoposition.Latitude, LocationManager.Geoposition.Longitude, TimeZoneInfo.FindSystemTimeZoneById(LocationManager.Geoposition.TimeZone));
 
             OnPropertyChanged(nameof(Date));
-            OnPropertyChanged(nameof(DownTime));
+            OnPropertyChanged(nameof(DawnTime));
             OnPropertyChanged(nameof(DuskTime));
             OnPropertyChanged(nameof(FoolMoonDate));
             OnPropertyChanged(nameof(MoonIcon));

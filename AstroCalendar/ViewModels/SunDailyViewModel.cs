@@ -60,6 +60,7 @@ namespace AstroCalendar.ViewModels
             OnPropertyChanged(nameof(AstroDawnTime));
             OnPropertyChanged(nameof(AstroDuskTime));
             OnPropertyChanged(nameof(CivilDawnTime));
+            OnPropertyChanged(nameof(CivilDuskTime));
             OnPropertyChanged(nameof(NauticalDawnTime));
             OnPropertyChanged(nameof(NauticalDuskTime));
             OnPropertyChanged(nameof(NoonTime));

@@ -21,8 +21,8 @@
                                 </VisualState.StateTriggers>
                                 <VisualState.Setters>
                                     <Setter Target="CalendItemGrid.Width" Value="40" />
-                                    <Setter Target="CalendItemGrid.Height" Value="53" />
-                                    <Setter Target="CalendItemDayTxt.FontSize" Value="20" />
+                                    <Setter Target="CalendItemGrid.Height" Value="60" />
+                                    <Setter Target="CalendItemDayTxt.FontSize" Value="15" />
                                     <Setter Target="CalendItemDawnTxt.FontSize" Value="12" />
                                     <Setter Target="CalendItemDuskTxt.FontSize" Value="12" />
                                 </VisualState.Setters>
@@ -30,14 +30,14 @@
 
                             <VisualState x:Name="WideLayout">
                                 <VisualState.StateTriggers>
-                                    <AdaptiveTrigger MinWindowWidth="600" />
+                                    <AdaptiveTrigger MinWindowWidth="550" />
                                 </VisualState.StateTriggers>
                                 <VisualState.Setters>
-                                    <Setter Target="CalendItemGrid.Width" Value="70" />
-                                    <Setter Target="CalendItemGrid.Height" Value="80" />
-                                    <Setter Target="CalendItemDayTxt.FontSize" Value="24" />
-                                    <Setter Target="CalendItemDawnTxt.FontSize" Value="16" />
-                                    <Setter Target="CalendItemDuskTxt.FontSize" Value="16" />
+                                    <Setter Target="CalendItemGrid.Width" Value="60" />
+                                    <Setter Target="CalendItemGrid.Height" Value="70" />
+                                    <Setter Target="CalendItemDayTxt.FontSize" Value="22" />
+                                    <Setter Target="CalendItemDawnTxt.FontSize" Value="15" />
+                                    <Setter Target="CalendItemDuskTxt.FontSize" Value="15" />
                                 </VisualState.Setters>
                             </VisualState>
 
@@ -56,7 +56,7 @@
                         </VisualStateGroup>
                     </VisualStateManager.VisualStateGroups>
                     
-                    <Grid x:Name="CalendItemGrid" Width="50" Height="60" Margin="5">                
+                    <Grid x:Name="CalendItemGrid" Margin="5" Width="50" Height="60">                
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*" />
                         <RowDefinition Height="*" />
@@ -144,12 +144,14 @@
         </RelativePanel>
         <GridView Name="CalendarGrid" Grid.Row="2" ItemTemplate="{StaticResource CalendTemplate}" ItemsSource="{Binding Calend}"
                   SelectionMode="Single" HorizontalAlignment="Center" IsItemClickEnabled="True" SelectionChanged="CalendarGrid_SelectionChanged"
-                  ManipulationMode="TranslateX" ManipulationDelta="CalendarGrid_ManipulationDelta" ManipulationCompleted="CalendarGrid_ManipulationCompleted" >
+                  ManipulationMode="TranslateX" ManipulationDelta="CalendarGrid_ManipulationDelta" ManipulationCompleted="CalendarGrid_ManipulationCompleted" 
+                  VirtualizingStackPanel.VirtualizationMode="Standard" >
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapGrid Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  MaximumRowsOrColumns="7" />
+                    <VariableSizedWrapGrid Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"   MaximumRowsOrColumns="7" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
+            
         </GridView>
         <GridView Name="PhaseGrid" Grid.Row="2" ItemTemplate="{StaticResource PhaseTemplate}" ItemsSource="{Binding Phases}"
                   SelectionMode="Single" HorizontalAlignment="Center" IsItemClickEnabled="True" VirtualizingStackPanel.VirtualizationMode="Standard" SelectionChanged="PhaseGrid_SelectionChanged" >

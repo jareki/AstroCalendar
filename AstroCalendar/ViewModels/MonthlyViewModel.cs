@@ -176,24 +176,18 @@ namespace AstroCalendar.ViewModels
 
         void ShowSun(CalendItem selected)
         {
-                var param = new MainNavParam()
-                {
-                    Date = new DateTime(_date.Year, _date.Month, selected.DayNum, 12, 0, 0),
-                    IsSun = TypeCol.IndexOf(SelectedType) < 4
-                };
-                Frame thisFrame = Window.Current.Content as Frame;
-                thisFrame.Navigate(typeof(MainPage), param);
+            App.SelectedDate = new DateTime(_date.Year, _date.Month, selected.DayNum, 12, 0, 0);
+            bool IsSun = true;
+            Frame thisFrame = Window.Current.Content as Frame;
+            thisFrame.Navigate(typeof(MainPage),IsSun);
         }
 
         void ShowMooon(PhaseItem selected)
         {
-            var param = new MainNavParam()
-            {
-                Date = new DateTime(_date.Year, _date.Month, selected.DayNum, 12, 0, 0),
-                IsSun = false
-            };
+            App.SelectedDate = new DateTime(_date.Year, _date.Month, selected.DayNum, 12, 0, 0);
+            bool IsSun = false;
             Frame thisFrame = Window.Current.Content as Frame;
-            thisFrame.Navigate(typeof(MainPage), param);
+            thisFrame.Navigate(typeof(MainPage), IsSun);
         }
     }
 }
